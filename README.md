@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/model.png" width="800">
+  <img src="assets/model.png">
 </p>
 
 # ProChoreo
