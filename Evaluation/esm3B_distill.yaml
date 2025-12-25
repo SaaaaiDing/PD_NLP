@@ -1,0 +1,30 @@
+data:
+  path: "/storage/home/sqd5856/Desktop/default/protein_design/dataset/DIPS_ppi.h5"
+  batch_size: 2
+  num_workers: 32  
+  pin_memory: true 
+
+model:
+  hidden_dim: 2560
+  nhead: 8
+  num_layers: 12
+  dim_feedforward: 2048
+  dropout: 0.1
+  min_len: 40
+  max_len: 256
+  similarity_weight: 10
+  distill_checkpoint: "./distill_model.pt"
+
+gpu:
+  use_multi_gpu: true
+
+training:
+  num_epochs: 1
+  lr: 0.0001
+  weight_decay: 0.0001
+  test_interval: 1
+
+paths:
+  log_dir: "/storage/home/sqd5856/Desktop/default/protein_design/LatentMD/MD_Design/esmep1_distill_out/"
+  checkpoint_dir: "/storage/home/sqd5856/Desktop/default/protein_design/LatentMD/MD_Design/esmep1_distill_out/checkpoints/"
+  test_output_dir: "/storage/home/sqd5856/Desktop/default/protein_design/LatentMD/MD_Design/esmep1_distill_out/test_output/"

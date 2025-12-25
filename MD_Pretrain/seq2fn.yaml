@@ -1,0 +1,51 @@
+data:
+  path: "/storage/home/sqd5856/Desktop/default/protein_design/dataset/pretrain_ensemble.h5"
+  batch_size: 8
+  max_seq_len: 1024
+  max_T: 10       
+
+model:
+  geom_dim: 128
+  egnn_layers: 4
+  attn: true
+  n_heads: 4
+  dropout: 0.1
+  num_types: 21
+  d_projection: 512
+  temperature: 0.07
+  do_vae: false
+  desired_frames: 10
+
+transformer:
+  num_layers: 6
+  n_heads: 8
+  d_model: 512
+  d_ff: 1024
+  dropout: 0.1
+
+masking:
+  mask_ratio: 0.15
+  random_ratio: 0.1
+  keep_ratio: 0.1
+
+training:
+  num_epochs: 20
+  lr: 0.0001
+  weight_decay: 0.00001
+  accum_steps: 4
+  seed: 43
+  mixed_precision: true
+  temperature: 0.5
+
+  # Additional weighting factors for losses
+  contrast_weight: 10.0
+  diversity_weight: 0.5
+  recon_weight: 0.0
+
+paths:
+  checkpoint_dir: "./seq2fn_distill"
+  log_dir: "./seq2fn_distill"
+  embeddings_path: "./seq2fn_distill/clipmd_embeddings.pt"
+
+gpu:
+  use_multi_gpu: true

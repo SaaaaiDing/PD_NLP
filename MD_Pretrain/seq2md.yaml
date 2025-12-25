@@ -1,0 +1,47 @@
+data:
+  path: "/storage/home/sqd5856/Desktop/default/protein_design/dataset/pretrain_final.h5"
+  batch_size: 4
+  max_seq_len: 512
+  max_T: 10       
+
+model:
+  geom_dim: 512
+  layers: 2
+  attn: true
+  n_heads: 4
+  dropout: 0.1
+  num_types: 21
+
+  # Possibly: do_vae, do_diversity, do_contrastive, etc.
+  do_vae: false
+  desired_frames: 10
+
+transformer:
+  num_layers: 8
+  n_heads: 8
+  d_model: 512
+  d_ff: 1024
+  dropout: 0.1
+
+masking:
+  mask_ratio: 0.15
+  random_ratio: 0.1
+  keep_ratio: 0.1
+
+training:
+  num_epochs: 100
+  lr: 0.001
+  weight_decay: 0.00001
+
+  # Additional weighting factors for losses
+  contrastive_weight: 10.0
+  diversity_weight: 0.5
+  recon_weight: 0.05
+
+paths:
+  checkpoint_dir: "./seq2md_eval2_out"
+  log_dir: "./seq2md_eval2_out"
+  embeddings_path: "./seq2md_eval2_out/clipmd_embeddings.pt"
+
+gpu:
+  use_multi_gpu: true
